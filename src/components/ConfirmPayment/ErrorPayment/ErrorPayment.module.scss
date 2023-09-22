@@ -1,0 +1,85 @@
+.errorWrapper{
+    padding-top: 30px;
+    .errorIcon {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: rgb(165, 18, 18);
+        margin: 0 auto;
+    }
+    
+    .errorIcon::before, 
+    .errorIcon::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60%; 
+        height: 6px; 
+        background-color: white;
+        border-radius: 3px; 
+    }
+    
+    .errorIcon::before {
+        transform: translate(-50%, -50%) rotate(45deg); 
+    }
+    
+    .errorIcon::after {
+        transform: translate(-50%, -50%) rotate(-45deg); 
+    }
+    
+    .errorTitle{
+        text-align: center;
+        margin: 20px 0;
+        font-size: 23px;
+        font-weight: 700;
+        color: #242424;
+        @media screen and (max-width: 350px){
+            font-size: 21px;
+        }
+    }
+
+    
+    .backtoStore{
+        font-size: 16px;
+        border: 2px solid #5f4ea6;
+        width: 100%;
+        max-width: 340px;
+        display: block;
+        margin: 100px auto;
+        padding: 15px 0;
+        border-radius: 8px;
+        color: #5f4ea6;
+        font-weight: 600;
+        @media screen and (max-width: 767px){
+            margin: 120px auto;
+        }
+        @media screen and (max-width: 767px){
+            margin: 80px auto;
+        }
+        transition: 0.2s ease background, 0.2s ease color;
+        &:active{
+            color: #FFF;
+            background: #5f4ea6;
+        }
+    }
+    .orderDetails{
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        @media screen and (max-width: 767px){
+            bottom: 60px;
+        }
+        p{
+            text-align: center;
+            font-size: 16px;
+            color: #242424;
+            font-weight: 600;
+        }
+    }
+}

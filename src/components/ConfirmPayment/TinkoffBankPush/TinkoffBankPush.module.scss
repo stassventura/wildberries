@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+.tinkoffPushContainer{
+
+    .logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 5px;
+    .bankLogo{
+        height: 35px;
+    }
+
+    .titleDevider{
+        width: calc(100% + 30px);
+        height: 1px;
+        position: absolute;
+        background-color: #efefef;
+        left: -15px;
+        bottom: 0;
+    }
+    }
+    .paymentDetails{
+        width: calc(100% + 30px);
+        padding-top: 15px;
+        padding-bottom: 20px;
+        margin-left: -15px;
+        padding-left: 15px;
+        .orderPrice{
+            color: #282828;
+            font-weight: 600;
+            font-size: 21px;
+            cursor: pointer;
+            .ic{
+                color: #676767;
+
+            }
+            .angle{
+                margin-left: 15px;
+                transition: 0.2s ease-in transform;
+            }
+            .open{
+                transform: rotate(-180deg);
+            }
+        }
+        .detailsBody.open {
+            max-height: 157px;
+          }
+        .detailsBody{
+            overflow: hidden;
+            transition: max-height 0.2s ease-in-out;
+            max-height: 0px; /* скрытое состояние */
+            font-size: 14px;
+            .detailsItem{
+                display: flex;
+                align-items: center;
+                span{
+                    width: 150px;
+                    display: block;
+                    color: #575757;
+                    font-weight: 500;
+
+                }
+
+                &:first-child{
+                    margin-top: 10px;
+                    p{
+                        color: rgba(37, 101, 173, 0.8);
+                        text-transform: uppercase;
+                        font-weight: 500;
+
+                    }
+                }
+                &:last-child{
+                    p{
+                        color: #191919;
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            .card{
+                margin-top: 5px;
+                
+                p{
+                    color: #191919;
+                    font-weight: 500;
+                }
+            }
+            .date{
+                margin-top: 5px;
+                // margin-bottom: 5px;
+                p{
+                    color: #191919;
+                    font-weight: 500;
+                }
+            }
+        }
+        border-bottom: 1px solid #efefef;
+
+    }
+   .confirmPayment{
+        span{
+            display: block;
+            margin-top: 15px;
+            color: #292929;
+            font-weight: 500;
+            font-size: 19px;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .codeInput{
+            width: 80%;
+            outline: none;
+            background-color: #eef1f8;
+            border: none;
+            margin-top: 15px;
+            padding: 15px;
+            padding-bottom: 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            @media screen and (max-width: 767px) {
+                width: 100%;
+            }
+            // font-family: 'Roboto Condensed', sans-serif;
+        }
+   }
+   .paymentActions{
+        position: absolute;
+        bottom: 30px;
+        @media screen and (max-width: 767px) {
+            position: relative;
+            bottom: 0;
+            top: 30px;
+        }
+        .paymentAction{
+            font-size: 14px;
+            color: rgba(37, 101, 173, 0.8);
+            font-weight: 500;
+            cursor: pointer;
+
+            &:not(:last-child){
+                margin-top: 8px;
+            }
+            &:last-child{
+                margin-top: 8px;
+            }
+        }
+   }
+}

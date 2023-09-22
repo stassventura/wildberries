@@ -1,0 +1,330 @@
+
+// .fixed{
+//     width: 100%;
+//     position: fixed !important;
+//     top: 0;
+//     left: 0;
+//     z-index: 500;
+//     background-color: #a811da;
+// }
+
+// .devider{
+//     width: 100%;
+//     height: 141px;
+// }
+
+.headerWrapper{
+    padding-bottom: 18px;
+    position: relative;
+    @media screen and (max-width: 1199px) {
+        padding-bottom: calc(56px + 18px);
+    }
+    @media screen and (max-width: 1023px) {
+        padding: 8px 0;
+    }
+    .header{
+        padding-top: 15px;
+        @media screen and (max-width: 1023px) {
+           padding-top: 0;
+        }
+        .upHeader{
+            display: flex;
+            align-items: center;
+            @media screen and (max-width: 1023px) {
+                display: none;
+            }
+            .simpleMenu{
+                display: flex;
+                align-items: center;
+                gap: 32px;
+                @media screen and (max-width: 1199px) {
+                    gap: 25px;
+                  }
+                .currency{
+                    width: 46px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    color: #FFF;
+                    font-size: 14px;
+                    .currencySymbol{
+                        opacity: 0.7;
+                    }
+                    span{
+                        transform: scale(0.7);
+                        display: block;
+                        width: 15px;
+                        height: 16px;
+                        background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2215%22%20height%3D%2216%22%20viewBox%3D%220%200%2015%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M14.5732%2010.5742C13.5436%2013.4872%2010.7655%2015.5742%207.49999%2015.5742C4.23445%2015.5742%201.45635%2013.4872%200.426758%2010.5742H14.5732Z%22%20fill%3D%22%23D90012%22%2F%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M14.5732%2010.5742C14.8496%209.79227%2015%208.95081%2015%208.07422C15%207.19763%2014.8496%206.35617%2014.5732%205.57422H0.426764C0.150386%206.35617%200%207.19763%200%208.07422C0%208.95081%200.150386%209.79227%200.426764%2010.5742H14.5732Z%22%20fill%3D%22%230033A0%22%2F%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M14.5732%205.57422H0.426758C1.45635%202.66124%204.23445%200.574219%207.49999%200.574219C10.7655%200.574219%2013.5436%202.66124%2014.5732%205.57422Z%22%20fill%3D%22%23F8F8F8%22%2F%3E%0A%3C%2Fsvg%3E%0A');
+                    }
+                }
+                .location{
+                    width: 65px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    opacity: 0.7;
+                    @media screen and (max-width: 1199px) {
+                        width: fit-content;
+                      }
+                    .city{
+                        font-size: 14px;
+                        color: #FFF;
+                    }
+                    span{
+                        display: block;
+                        width: 11px;
+                        height: 16px;
+                        background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2211%22%20height%3D%2216%22%20viewBox%3D%220%200%2011%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M10.5385%205.34162C10.5385%207.56736%207.53919%2012.3921%206.06629%2014.6272C5.68463%2015.2063%204.85387%2015.2063%204.47221%2014.6272C2.99931%2012.3921%200%207.56736%200%205.34162C0%202.39153%202.35912%200%205.26925%200C8.17938%200%2010.5385%202.39153%2010.5385%205.34162ZM7.72821%205.34157C7.72821%206.71829%206.62728%207.83433%205.26922%207.83433C3.91116%207.83433%202.81024%206.71829%202.81024%205.34157C2.81024%203.96486%203.91116%202.84882%205.26922%202.84882C6.62728%202.84882%207.72821%203.96486%207.72821%205.34157Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E%0A');
+                        @media screen and (max-width: 1199px) {
+                          display: none;
+                        }
+                    }
+                }
+                .sellOnWildberries{
+                    color: #fff;
+                    padding: 1px 12px 3px;
+                    background: #cb11ab linear-gradient(90deg,#bf5ae0 0,#a811da 100%);
+                    border-radius: 40px;
+                    font-size: 14px;
+                }
+                .workOnWildberries{
+                    color: #fff;
+                    padding: 1px 12px 3px;
+                    background-color: #ff636d;
+                    background-image: linear-gradient(90.4deg,#ff636d .17%,#f88245 57.13%,#f3a720 103.22%);
+                    border-radius: 40px;
+                    font-size: 14px;
+                }
+            }
+
+            .balance{
+                display: flex;
+                align-items: center;
+                display: block;
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 600;
+                color: #fff;
+                background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M2%200a2%202%200%200%200-2%202v6a8%208%200%200%200%208%208h6a2%202%200%200%200%202-2V8a8%208%200%200%200-8-8H2Zm3.897%2012a.597.597%200%200%201-.596-.597V4.597c0-.324.261-.597.596-.597h3.98c.335%200%20.597.273.597.597v.129a.597.597%200%200%201-.596.597H7.137a.2.2%200%200%200-.2.2v1.504c0%20.11.09.2.2.2H8.44c.882%200%201.584.192%202.092.589.515.4.769.968.769%201.686%200%20.766-.27%201.38-.814%201.831-.538.449-1.267.667-2.171.667h-2.42Zm1.24-1.253h.954c.5%200%20.868-.108%201.12-.31.248-.2.377-.48.377-.853%200-.382-.123-.651-.354-.829-.235-.18-.602-.28-1.12-.28h-.977a.2.2%200%200%200-.2.2v1.872c0%20.11.09.2.2.2Z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E);
+                background-position: 4px 4px;
+                background-repeat: no-repeat;
+                background-color: rgba(255,255,255,.2);
+                padding: 2px 4px 2px 24px;
+                height: 24px;
+                border-radius: 4px 12px;
+                flex-shrink: 0;
+                cursor: pointer;
+                margin-left: auto;
+            }
+        }
+        .headerContent{
+            font-size: 18px;
+            display: flex;
+            margin-top: 15px;
+            align-items: center;
+            @media screen and (max-width: 1023px) {
+                margin-top: 0;
+             }
+            .headerMenu{
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                justify-content: space-between;
+                .logo{
+                    position: relative;
+                    top: 3px;
+                    min-height: 36.5px;
+                }
+                .burgerNav{
+                    border: 1px solid rgba(255,255,255,.4);
+                    border-radius: 8px;
+                    padding: 21px 9px;
+                    @media screen and (max-width: 1023px) {
+                        display: none;
+                    }
+                    .burgerItem{
+                        width: 28px;
+                        height: 4px;
+                        position: relative;
+                        display: block;
+                        background: #fff;
+                        border-radius: 4px;
+    
+                        &::before{
+                            content: '';
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            left: 0;
+                            display: block;
+                            background: #fff;
+                            border-radius: 4px;
+                            top: -10px;
+                        }
+                        &::after{
+                            content: '';
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            left: 0;
+                            display: block;
+                            background: #fff;
+                            border-radius: 4px;
+                            bottom: -10px;
+                        }
+                    }
+                }
+                .logo{
+                    @media screen and (max-width: 1023px) {
+                       img{
+                        width: 137px;
+                       }
+                    }
+                }
+            }
+           
+            .searchGroup{
+                position: relative;
+                width: 740px;
+                margin-left: 15px;
+                margin-right: 40px;
+                .searchInput{
+                    font-size: 18px;
+                    line-height: 24px;
+                    transition: background .3s ease 0s;
+                    color: rgba(255,255,255,.5);
+                    width: 100%;
+                    padding: 16px 120px 16px 44px;
+                    margin: 0;
+                    border-radius: 56px;
+                    background: rgba(255,255,255,.2);
+                    cursor: pointer;
+                    font-family: inherit;
+                    -webkit-appearance: none;
+                    appearance: none;
+                    &::placeholder{
+                        color: #daa0d6;
+                        font-weight: 400;
+                    }
+                }
+                .searchIcon{
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2248%22%20height%3D%2224%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M38.7%2013.5l-.2.3a6%206%200%2010-.6.6l-.6.4%204.7%204.5a1%201%200%20001.3-1.3l-4.6-4.5zM34%2014a4.1%204.1%200%20110-8.3%204.1%204.1%200%20010%208.3z%22%20fill%3D%22%23B6B6B6%22%2F%3E%3Cpath%20d%3D%22M14.7%2013.5l-.2.3a6%206%200%2010-.6.6l-.6.4%204.7%204.5a1%201%200%20001.3-1.3l-4.6-4.5zM10%2014a4.1%204.1%200%20110-8.3%204.1%204.1%200%20010%208.3z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E');
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 16px;
+                    opacity: 0.5;
+                }
+                .searchPhoto{
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2272%22%20height%3D%2224%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M67.9%2020H52c-.3%200-.6-.1-.8-.3-.2-.2-.3-.5-.3-.8V7.4c0-.3.1-.6.3-.8.2-.2.5-.3.8-.3H55L57.2%204h5.6l2.3%202.3h2.8c.3%200%20.6.1.8.3.2.2.3.5.3.8V19c0%20.3-.1.6-.3.8-.2.2-.5.3-.8.3zm-.6-12h-3l-2.2-2.3H58L55.6%208h-3v10.3h14.7V8zm-7.3.6a3.9%203.9%200%20013.6%202.4%204%204%200%2001-.8%204.4%204%204%200%2001-6.7-2.8c0-1%20.4-2.1%201.1-2.9A4%204%200%200160%208.6zm0%206.3a2.2%202.2%200%20002-1.5%202.3%202.3%200%2000-.4-2.4%202.2%202.2%200%2000-3.9%201.6c0%20.6.3%201.2.7%201.6.4.4%201%20.7%201.6.7z%22%20fill%3D%22%23CB11AB%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M43.9%2020H28c-.3%200-.6-.1-.8-.3-.2-.2-.3-.5-.3-.8V7.4c0-.3.1-.6.3-.8.2-.2.5-.3.8-.3H31L33.2%204h5.6l2.3%202.3h2.8c.3%200%20.6.1.8.3.2.2.3.5.3.8V19c0%20.3-.1.6-.3.8-.2.2-.5.3-.8.3zm-.6-12h-3l-2.2-2.3H34L31.6%208h-3v10.3h14.7V8zm-7.3.6a3.9%203.9%200%20013.6%202.4%204%204%200%2001-.8%204.4%204%204%200%2001-6.7-2.8c0-1%20.4-2.1%201.1-2.9A4%204%200%200136%208.6zm0%206.3a2.2%202.2%200%20002-1.5%202.3%202.3%200%2000-.4-2.4%202.2%202.2%200%2000-3.9%201.6c0%20.6.3%201.2.7%201.6.4.4%201%20.7%201.6.7z%22%20fill%3D%22%23999%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M19.9%2020H4c-.3%200-.6-.1-.8-.3-.2-.2-.3-.5-.3-.8V7.4c0-.3.1-.6.3-.8.2-.2.5-.3.8-.3H7L9.2%204h5.6l2.3%202.3h2.8c.3%200%20.6.1.8.3.2.2.3.5.3.8V19c0%20.3-.1.6-.3.8-.2.2-.5.3-.8.3zm-.6-12h-3l-2.2-2.3H10L7.6%208h-3v10.3h14.7V8zm-7.3.6a3.9%203.9%200%20013.6%202.4%204%204%200%2001-.8%204.4A4%204%200%20018%2012.6c0-1%20.4-2.1%201.1-2.9A4%204%200%200112%208.6zm0%206.3a2.2%202.2%200%20002-1.5%202.3%202.3%200%2000-.4-2.4%202.2%202.2%200%2000-3.8%201.6c0%20.6.2%201.2.6%201.6.4.4%201%20.7%201.6.7z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E');
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 16px;
+                    opacity: 0.5;
+                }
+                @media screen and (max-width: 1199px) {
+                    width: calc(100% - 20px);
+                    position: absolute;
+                    left: -20px;
+
+                    bottom: 15px;
+                }
+                @media screen and (max-width: 1023px) {
+                    display: none;
+                }
+            }
+            .actions{
+                display: flex;
+                gap: 35px;
+                align-items: center;
+                margin-left: auto;
+                .actionItem{
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: rgba(255,255,255,.6);
+                    text-decoration: none;
+                    cursor: pointer;
+                    transition: color .3s ease 0s;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                    height: 53px;
+                    position: relative;
+                    &:hover{
+                        color: #FFF;
+                    }
+                    .cartCount{
+                        position: absolute;
+                        top: -6px;
+                        right: 5px;
+                        background-color: #f55123;
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 12px;
+                        font-weight: 600;
+                        color: #FFF;
+                    }
+                }
+                @media screen and (max-width: 1023px) {
+                   display: none;
+                 }
+            }
+            .actionsMobile{
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                gap: 30px;
+                display: none;
+                @media screen and (max-width: 1023px) {
+                    display: flex;
+                }
+                @media screen and (max-width: 425px) {
+                    gap: 20px;
+                }
+                .currency{
+                    font-size: 14px;
+                    line-height: 20px;
+                    font-weight: 400;
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    padding: 4px;
+                    border-radius: 4px;
+                    background-color: rgba(255,255,255,.2);
+                    color: rgba(255, 255, 255, 0.5);
+                    span{
+                        background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2215%22%20height%3D%2216%22%20viewBox%3D%220%200%2015%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M14.5732%2010.5742C13.5436%2013.4872%2010.7655%2015.5742%207.49999%2015.5742C4.23445%2015.5742%201.45635%2013.4872%200.426758%2010.5742H14.5732Z%22%20fill%3D%22%23D90012%22%2F%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M14.5732%2010.5742C14.8496%209.79227%2015%208.95081%2015%208.07422C15%207.19763%2014.8496%206.35617%2014.5732%205.57422H0.426764C0.150386%206.35617%200%207.19763%200%208.07422C0%208.95081%200.150386%209.79227%200.426764%2010.5742H14.5732Z%22%20fill%3D%22%230033A0%22%2F%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M14.5732%205.57422H0.426758C1.45635%202.66124%204.23445%200.574219%207.49999%200.574219C10.7655%200.574219%2013.5436%202.66124%2014.5732%205.57422Z%22%20fill%3D%22%23F8F8F8%22%2F%3E%0A%3C%2Fsvg%3E%0A');
+                        width: 15px;
+                        height: 15px;
+                        transform: scale(0.9);
+                    }
+                }
+
+                .location{
+                    background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2218%22%20height%3D%2223%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M16.85%209c0%201.914-.878%204.137-2.299%206.344-1.406%202.186-3.269%204.237-5.055%205.779a.668.668%200%200%201-.901-.032c-1.672-1.569-3.56-3.626-5.022-5.81C2.094%2013.07%201.15%2010.876%201.15%209a7.85%207.85%200%201%201%2015.7%200Z%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.3%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%229%22%20r%3D%222.85%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.3%22%2F%3E%3C%2Fsvg%3E');
+                    width: 18px;
+                    height: 23px;
+                }
+                .search{
+                    background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2248%22%20height%3D%2224%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M38.7%2013.5l-.2.3a6%206%200%2010-.6.6l-.6.4%204.7%204.5a1%201%200%20001.3-1.3l-4.6-4.5zM34%2014a4.1%204.1%200%20110-8.3%204.1%204.1%200%20010%208.3z%22%20fill%3D%22%23B6B6B6%22%2F%3E%3Cpath%20d%3D%22M14.7%2013.5l-.2.3a6%206%200%2010-.6.6l-.6.4%204.7%204.5a1%201%200%20001.3-1.3l-4.6-4.5zM10%2014a4.1%204.1%200%20110-8.3%204.1%204.1%200%20010%208.3z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E');
+                    width: 21px;
+                    height: 23px;
+                    transform: scale(1.3);
+                }
+            }
+        }
+    }
+}

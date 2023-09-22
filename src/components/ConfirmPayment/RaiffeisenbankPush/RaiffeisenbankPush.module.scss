@@ -1,0 +1,79 @@
+.raiffeisenbankContainer{
+    overflow: hidden;
+    .logo{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        .bankLogo{
+            height: 35px;
+        }
+        .masterLogo{
+            display: block;
+            position: relative;
+            left: 35px;
+        }
+    }
+
+    .price{
+        margin: 25px 0;
+        font-weight: 700;
+        font-size: 24px;
+        color: #1b1a1f;
+        text-align: center;
+    }
+    .orderDetails{
+        width: fit-content;
+        margin: 0 auto;
+        .detailsItem{
+            display: flex;
+            gap: 10px;
+            width: fit-content;
+            p{
+                width: 110px;
+                color: #ababad;
+                font-weight: 500;
+                text-align: right;
+            }
+            span{
+                color: #171719;
+                font-weight: 500;
+
+            }
+
+            &:not(:first-child){
+                margin-top: 15px;
+            }
+        }
+    }
+    .codeInput{
+        width: 145px;
+        display: block;
+        margin: 0 auto;
+        margin-top: 30px;
+        border: none;
+        border-bottom: 2px solid #a6a6a8;
+        padding: 6px 18px;
+        font-size: 18px;
+        outline: none;
+    }
+
+    .info{
+        margin-top: 20px;
+        font-size: 14px;
+        text-align: center;
+        color: #b3b3b3;
+        span{
+            display: block;
+            margin-top: 15px;
+        }
+    }
+    .cancelPayment{
+        margin-top: 30px;
+        font-size: 14px;
+        color: #a5a5a5;
+        text-align: center;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}

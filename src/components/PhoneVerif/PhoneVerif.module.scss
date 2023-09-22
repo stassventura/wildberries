@@ -1,0 +1,344 @@
+.phoneVerifWrapper{
+    width: 100%;
+    // height: calc(100vh - 141px);
+    background-color: #FFF;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    padding: 70px 0;
+    position: relative;
+    @media screen and (max-width: 1023px) {
+        border-radius: 0px;
+        padding: 55px 0;
+    }
+    .form{
+        max-width: 440px;
+        background-color: #FFF;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0,0,0,.1);
+        margin: 0 auto;
+        position: relative;
+        @media screen and (max-width: 767px) {
+           padding: 0 16px;
+           max-width: 320px;
+           box-shadow: none;
+           position: static;
+        }
+
+        .backArrow{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            @media screen and (max-width: 767px) {
+                top: 10px;
+             }
+            &::before{
+                content: '';
+                width: 14px;
+                height: 2px;
+                position: absolute;
+                top: calc(50% - 1px);
+                right: calc(50% - 9px);
+                background-color: #9d9da5;
+                transition: background-color .3s ease 0s;
+            }
+            &::after{
+                content: '';
+                width: 8px;
+                height: 8px;
+                position: absolute;
+                top: calc(50% - 5px);
+                left: calc(50% - 5px);
+                border-style: solid;
+                border-color: #9d9da5;
+                border-width: 2px 2px 0 0;
+                transform: rotate(-135deg);
+                box-sizing: content-box;
+                transition: border-color .3s ease 0s;
+            }
+        }
+        .title{
+            text-align: center;
+            font-size: 24px;
+            line-height: 32px;
+            margin-bottom: 24px;
+            color: #242424;
+            font-weight: 700;
+            @media screen and (max-width: 767px) {
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 20px;
+            }
+        }
+        .titleOtp{
+            text-align: center;
+            font-size: 24px;
+            line-height: 32px;
+            margin-bottom: 12px;
+            color: #242424;
+            font-weight: 700;
+            @media screen and (max-width: 767px) {
+                font-size: 18px;
+                line-height: 24px;
+                // margin-bottom: 20px;
+            }
+        }
+        .resendAfter{
+            margin-top: 32px;
+            font-size: 16px;
+            color: rgb(134, 134, 149);
+            line-height: 22px;
+            text-align: center;
+        }
+        .resend{
+            width: 100%;
+            padding: 12px 24px 14px 24px;
+            background-color: #f1f1f5;
+            border-radius: 8px;
+            margin-top: 32px;
+            cursor: pointer;
+            color: #242424;
+            font-size: 16px;
+            line-height: 22px;
+            font-weight: 600;
+            transition: 0.3s ease background;
+            &:hover{
+                background-color: #e8e8f0;
+            }
+            &:active{
+                background-color: #d9d9e6;
+            }
+        }
+        .otpContainer {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            .otpInput {
+                width: 52px !important;
+                height: 60px !important;
+                text-align: center; // символ вводится в центре инпута
+                border-radius: 8px;
+                background-color: #f1f1f5;
+                border: 1px solid transparent; // чтобы размер инпута не менялся при фокусе
+                font-size: 16px; // или другой размер шрифта, который вы предпочитаете
+                padding: 10px 5px;
+                font-size: 31px;
+                font-weight: 700;
+                color: #242424;
+                @media screen and (max-width:767px) {
+                    width: 44px !important;
+                    height: 52px !important;
+                }
+                &:focus {
+                    background-color: white;
+                    border: 2px solid #582199;
+                    outline: none; // убрать стандартный контур при фокусе
+                }
+            }
+        }
+        
+        .subtitle{
+            text-align: center;
+            font-size: 18px;
+            color: #242424;
+            line-height: 24px;
+            @media screen and (max-width:767px) {
+                font-size: 16px;
+                line-height: 22px;
+            }
+        }
+
+        .inputGroup {
+            position: relative;
+            width: 100%;
+            z-index: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f1f1f5;
+            transition: 0.3s ease background;
+
+            &:hover{
+                background-color: #e8e8f0;
+
+            }
+            .phoneInput {
+                color: #242424;
+                z-index: 2;
+                width: 100%;
+                padding: 15px 14px 15px 81.5px;
+                border: 3px solid #f1f1f5;
+                font-size: 16px;
+                font-weight: 400;
+                font-family: Arial, Helvetica, sans-serif;
+                border-radius: 8px;
+                height: 52px;
+                transition: 0.3s ease border;
+               &:focus{
+                border: 3px solid #4e1392;
+
+               }
+
+              
+            }
+            .code{
+                position: absolute;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                left: 63px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .error{
+                border: 3px solid rgb(255, 68, 68);
+              }
+            .phonePlaceholder {
+                color: rgba(200, 203, 219, 0.5);
+                z-index: 1;
+                font-size: 16px;
+                position: absolute;
+                font-weight: 400;
+                font-family: Arial, Helvetica, sans-serif;
+                left: 84px;
+                top: 17px;
+                
+            }
+
+            .dropBtn{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 62px;
+                height: 52px;
+                &::after{
+                    content: url('data:image/svg+xml,%3Csvg%20width%3D%2215%22%20height%3D%2216%22%20viewBox%3D%220%200%2015%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M14.5732%2010.5742C13.5436%2013.4872%2010.7655%2015.5742%207.49999%2015.5742C4.23445%2015.5742%201.45635%2013.4872%200.426758%2010.5742H14.5732Z%22%20fill%3D%22%23D90012%22%2F%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M14.5732%2010.5742C14.8496%209.79227%2015%208.95081%2015%208.07422C15%207.19763%2014.8496%206.35617%2014.5732%205.57422H0.426764C0.150386%206.35617%200%207.19763%200%208.07422C0%208.95081%200.150386%209.79227%200.426764%2010.5742H14.5732Z%22%20fill%3D%22%230033A0%22%2F%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M14.5732%205.57422H0.426758C1.45635%202.66124%204.23445%200.574219%207.49999%200.574219C10.7655%200.574219%2013.5436%202.66124%2014.5732%205.57422Z%22%20fill%3D%22%23F8F8F8%22%2F%3E%0A%3C%2Fsvg%3E%0A');
+                    position: absolute;
+                    top: calc(50% - 2px);
+                    transform: translateY(-50%);
+                    height: 16px;
+                    left: 24px;
+                }
+
+                &::before{
+                    content: '';
+                    box-sizing: border-box;
+                    width: 12px;
+                    height: 6px;
+                    transform: rotate(0);
+                    border: 6px solid transparent;
+                    border-top-color: #242424;
+                    border-bottom-width: 0;
+                    border-radius: 3px;
+                    margin-top: 0;
+                    transform-origin: center;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 43px;
+                }
+            }
+          }
+
+         
+          
+          .errorMsg{
+            color: rgb(255, 68, 68);
+            margin-top: 8px;
+            font-size: 14px;
+          }
+          .getCode{
+            margin-top: 20px;
+            padding: 12px 24px 14px 24px;
+            border: 2px solid rgb(78, 19, 146);
+            background-color: rgb(78, 19, 146);
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 22px;
+            color: #FFF;
+            width: 100%;
+            transition: 0.3s ease background;
+
+            &:hover{
+                background-color: #5a16a9;
+            }
+          }
+          .checkBoxWrapper{
+            font-size: 16px;
+            line-height: 22px;
+            color: #242424;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 25px;
+            span{
+                width: 20px;
+                height: 20px;
+                border: 1px solid #f1f1f5;
+                background-color: #f1f1f5;
+                border-radius: 6px;
+                cursor: pointer;
+                &:hover{
+                    border: 1px solid #a9a8b0;
+                }
+            }
+
+            .active{
+
+                background-color: rgb(78, 19, 146);
+                border: 1px solid rgb(78, 19, 146);
+                position: relative;
+                &:hover{
+                border: 1px solid rgb(78, 19, 146);
+
+                }
+                &::after{
+                    content: '';
+                    width: 6px;
+                    height: 12px;
+                    top: 2px;
+                    left: 6px;
+                    border-right: 2px solid #fff;
+                    border-bottom: 2px solid #fff;
+                    position: absolute;
+                    transform: rotate(45deg);
+                }
+            }
+          }
+
+          .public{
+            margin-top: 24px;
+            font-size: 14px;
+            line-height: 20px;
+            color: #242424;
+            padding-left: 30px;
+            position: relative;
+            span{
+                color: #868695;
+            }
+
+            &::before{
+                content: '';
+                transform: rotate(45deg);
+                display: inline-block;
+                position: absolute;
+                z-index: 1;
+                width: 5px;
+                height: 11px;
+                border-right: 2px solid #4e1392;
+                border-bottom: 2px solid #4e1392;
+                left: 4px;
+                top: 2px;
+            }
+          }
+          
+    }
+
+}

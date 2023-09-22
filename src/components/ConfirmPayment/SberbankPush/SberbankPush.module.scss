@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.sberbankPushContainer{
+
+    .logo{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        .bankLogo{
+            height: 25px;
+        }
+    
+        .mirIcon{
+            height: 40px;
+        }
+        .icon{
+            height: 25px;
+        }
+    }
+
+    .price{
+        color: #2e2e2e;
+        font-size: 21px;
+        font-weight: 700;
+        font-family: 'Roboto', sans-serif;
+        margin-top: 10px;
+    }
+
+    .item{
+        display: flex;
+        justify-content: space-between;
+       
+        p{
+            color: #525252;
+            font-weight: 500;
+        }
+        span{
+            color: #8f8f8f;
+        }
+    }
+    .store{
+        margin-top: 15px;
+        font-weight: 500;
+
+    }
+    .cardNum{
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        span{
+        display: flex;
+        align-items: center;
+        color: #8f8f8f;
+        font-weight: 500;
+        gap: 3px;
+        i{
+            margin-top: 4px;
+            font-size: 4px;
+        }
+        }
+    }
+    .date{
+        margin-top: 5px;
+        font-weight: 500;
+    }
+    .sendedCode{
+        margin-top: 25px;
+        font-weight: 500;
+        color: #161616;
+        font-size: 18px;
+    }
+    .sendedCodeMessage{
+        margin-top: 10px;
+        color: #525252;
+        font-size: 14px;
+        font-weight: 500;
+
+    }
+    .codeInput{
+        margin-top: 25px;
+        .label{
+            color: #909090;
+            margin-bottom: 0px;
+        }
+        .codeInput{
+            margin-top: 10px;
+            width: 100%;
+            height: 55px;
+            border-radius: 10px;
+            outline: none;
+            border: 1px solid #2e2e2e;
+            font-size: 31px;
+            padding: 0 10px;
+        }
+    }
+    .paymentDescription{
+        margin-top: 10px;
+        font-size: 10px;
+        color: #909090;
+        font-weight: 500;
+        span{
+            color: green;
+            font-weight: 700;
+        }
+    }
+}

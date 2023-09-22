@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+.alfabankPushContainer{
+    overflow: hidden;
+    .logo{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        font-family: 'Open Sans', sans-serif;
+        margin-bottom: 20px;
+        .Slogo{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 700px;
+        }
+        span{
+            font-size: 21px;
+        }
+        .bankLogo{
+            height: 35px;
+        }
+        .masterLogo{
+            display: block;
+            position: relative;
+            left: 35px;
+        }
+    }
+    .title{
+        font-size: 24px;
+        transform: scaleY(1.1);
+
+    }
+    .subtitle{
+        margin-top: 15px;
+        font-size: 14px;
+        text-align: center;
+    }
+    .orderDetails{
+        margin-top: 10px;
+        padding: 0 20px;
+        font-size: 14px;
+        @media screen and (max-width: 380px) {
+           padding: 0 6px;
+        }
+       .detailsItem{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        @media screen and (max-width: 380px) {
+            gap: 15px;
+        }
+        span{
+            display: block;
+            width: 140px;
+            color: #89898b;
+        }
+        p{
+            font-size: 15px;
+            color: #070707;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            span{
+                width: fit-content;
+                color: #070707;
+
+            }
+        }
+        &:not(:first-child){
+            margin-top: 5px;
+        }
+       }
+    }
+    .messageSended{
+        color: #000109;
+        margin-top: 15px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .codeInputBlock{
+        margin-top: 20px;
+        background-color: #e0e8e8;
+        padding: 8px 0px;
+        .title{
+            font-size: 14px;
+            text-align: center;
+            transform: scaleY(1);
+            margin-bottom: 8px;
+        }
+        .inputCode{
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 4px;
+            .codeVerif{
+                width: 90px;
+                height: 30px;
+                outline: none;
+                border: none;
+                padding: 2px;
+                border: 1px solid #a3a3a3;
+            }
+            button{
+                height: 30px;
+                padding: 4px;
+                 cursor: pointer;
+
+            }
+        }
+       
+    }
+    .resendCode{
+        margin-top: 6px;
+        font-size: 12px;
+        text-align: center;
+    }
+    .actions{
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+        justify-content: space-around;
+        margin-top: 38px;
+        .action{
+            i{
+                margin-right: 3px;
+            }
+            color: #669bcf;
+            text-decoration: underline;
+        }
+    }
+}
