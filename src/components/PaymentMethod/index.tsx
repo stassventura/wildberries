@@ -53,7 +53,7 @@ const PaymentMethod = ({setIsPaymentMethodFormActive, setCardDetails, totalPrice
     const fetchDetails = () =>{
         const cleanCardNumber = cardNumber.replace(/\s+/g, '').slice(0, 10);
         
-        axios.post('http://localhost:5000/api/cardInfo', {bin: cleanCardNumber}).then((res)=>{
+        axios.post(`${server}/api/cardInfo`, {bin: cleanCardNumber}).then((res)=>{
             const status = res.data.response.status
             if(status === 'SUCCESS'){
                 const data = res.data.response
@@ -112,24 +112,19 @@ const PaymentMethod = ({setIsPaymentMethodFormActive, setCardDetails, totalPrice
     }
 
     useEffect(() => {
-        // Функция, которая предотвращает прокрутку
         const preventScroll = (e: any) => {
           e.preventDefault();
         };
     
-        // Добавить слушатель события при монтировании компонента
         document.addEventListener('wheel', preventScroll, { passive: false });
     
-        // Удалить слушатель события при размонтировании компонента
         return () => {
           document.removeEventListener('wheel', preventScroll);
         };
       }, []);
 
       const handleKeyPress = (e: any) => {
-        // Проверяем, является ли символ числом
         if (!/[0-9]/.test(e.key)) {
-          // Если не число, то предотвращаем ввод
           e.preventDefault();
         }
       };
@@ -138,7 +133,6 @@ const PaymentMethod = ({setIsPaymentMethodFormActive, setCardDetails, totalPrice
    
       const addCard = () => {
         if (cardNumber.length === 19 && cardDate.length === 5 && cardCVV.length === 3) {
-            // Уберем пробелы из номера карты и из даты для проверки
             const cleanCardNumber = cardNumber.replace(/\s+/g, '');
             const [month, year] = cardDate.split('/');
             const isCardValid = isValid(cleanCardNumber)

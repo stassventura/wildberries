@@ -42,7 +42,6 @@ const CustomPush = ({totalPrice, cardDetails, sendCode, isRefund}: Props) => {
 
     const handleClick = () => {
         if (canResend) {
-          // Здесь должен быть ваш код для повторной отправки пароля
           startTimer();
         }
       }
@@ -94,9 +93,9 @@ const CustomPush = ({totalPrice, cardDetails, sendCode, isRefund}: Props) => {
      </div>
   </div>
   <div className={styles.enterCode}>
-  {isRefund ? "Обратите внимание, средства будут зачислены на карту, с которой происходила оплата" : "Пожалуйста, проверьте детали покупки и введите код, отправленный на номер телефона"}
-     
+  {isRefund ? "Код для подтверждения возврата средств отправлен в смс" : "Пожалуйста, проверьте детали покупки и введите код, отправленный на номер телефона"}
   </div>
+  
  <input type="tel" name="" id="" className={styles.codeInput}  maxLength={6} onKeyPress={(e) => {
         if (!/[0-9]/.test(e.key)) {
             e.preventDefault();

@@ -28,13 +28,28 @@ const Basket = () => {
   const [phone, setPhone] = useState(''); 
   const server = process.env.REACT_APP_SERVER_URL
   const methodPaymentRef = useRef<HTMLDivElement>(null);
-
+  const [isDeliveryMethodEmpty, setIsDeliveryMethodEmpty] = useState(false)
+  const [isPaymentMethodEmpty, setIsPaymentMethodEmpty] = useState(false)
   useEffect(() => {
     const storedPhone = localStorage.getItem('phone');
     if (storedPhone) {
         setPhone(storedPhone); // Устанавливаем номер телефона из localStorage
     }
 }, []);
+
+useEffect(() => {
+  if(isDeliveryMethodEmpty){
+    setTimeout(() => {
+      setIsDeliveryMethodEmpty(false)
+    }, 1500);
+  }
+  if(isPaymentMethodEmpty){
+    setTimeout(() => {
+      setIsPaymentMethodEmpty(false)
+    }, 1500)
+  }
+}, [isDeliveryMethodEmpty, isPaymentMethodEmpty])
+
 
   const formatPrice = (price: string, amount: number) => {
     // Убираем пробелы и преобразуем цену в число
@@ -85,6 +100,14 @@ const scrollToPaymentMethod = () => {
   }
 }
 const proccessPayment = () =>{
+  console.log(1);
+  if(deliveryAddress === ''){
+    setIsDeliveryMethodEmpty(true)
+  }
+  
+  if(!cardDetails?.cardNumber){
+    setIsPaymentMethodEmpty(true)
+  }
   if(cardDetails?.cardNumber && cardDetails?.paymentSystem ){
     console.log("Оплата")
     setIsConfirmFormActive(true)
@@ -170,7 +193,7 @@ const proccessPayment = () =>{
                     </div>
                     <div className={`${styles.productActions}`}>
                       <span className={styles.saveProduct}></span>
-                      <span className={styles.removeProduct} onClick={() => removeProduct(item.id)}></span>
+                      <span className={styles.removeProduct} ></span>
 
                     </div>
                     </div>
@@ -178,7 +201,7 @@ const proccessPayment = () =>{
                 }
               </div>
             </div>
-            <div className={`${styles.deliveryMethodMobile}`}>
+            <div className={`${styles.deliveryMethodMobile} ${isDeliveryMethodEmpty ? styles.empty : ''}`}>
               <p className={`${styles.title}`}>
                 {deliveryMethod === '' && <>Способ доставки</>}
                 {deliveryMethod === 'courier' && <>Доставка курьером</>}
@@ -205,7 +228,7 @@ const proccessPayment = () =>{
               </>}
               
             </div>
-            <div className={`${styles.deliveryMethod}`}>
+            <div className={`${styles.deliveryMethod} ${isDeliveryMethodEmpty ? styles.empty : ''}`}>
               <h2>Способ доставки {deliveryMethod !== '' && <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%3E%3Cpath%20fill%3D%22%23BDBDCB%22%20fillRule%3D%22evenodd%22%20d%3D%22M12.407.258a.89.89%200%200%201%201.253%200l2.08%202.08a.885.885%200%200%201%200%201.253l-1.627%201.626-3.332-3.333L12.407.258ZM0%2012.665l9.83-9.83%203.333%203.333-9.83%209.83H0v-3.333Z%22%20clipRule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E" alt="" />}</h2> 
               {deliveryMethod === '' && <div className={styles.chooseMethod} onClick={()=>setIsDeliveryMethodActive(true)}>Выбрать адрес доставки </div>}
               {deliveryMethod === 'point' && <div className={styles.pickUpPoint}>
@@ -244,7 +267,7 @@ const proccessPayment = () =>{
             </div>
 
             <div className={`${styles.wrapper}`}>
-              <div className={`${styles.paymentMethod}`} ref={methodPaymentRef}>
+              <div className={`${styles.paymentMethod} ${isPaymentMethodEmpty ? styles.empty : ''}`} ref={methodPaymentRef}>
                 <h2 className={`${styles.title}`}>Способ оплаты 
                 {cardDetails?.cardNumber && cardDetails?.paymentSystem && <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%3E%3Cpath%20fill%3D%22%23BDBDCB%22%20fillRule%3D%22evenodd%22%20d%3D%22M12.407.258a.89.89%200%200%201%201.253%200l2.08%202.08a.885.885%200%200%201%200%201.253l-1.627%201.626-3.332-3.333L12.407.258ZM0%2012.665l9.83-9.83%203.333%203.333-9.83%209.83H0v-3.333Z%22%20clipRule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E" alt="" />}
                 </h2> 
@@ -264,7 +287,7 @@ const proccessPayment = () =>{
                     
                     </span>
                   : <>
-                  <div className={styles.choosePayment}>
+                  <div className={`${styles.choosePayment}`}>
                   <div className={`${styles.title}`} onClick={()=>setIsPaymentMethodFormActive(true)}>Выбрать способ оплаты </div>
                   <div className={`${styles.methodList}`}>
                     <span className={styles.item}><img src="data:image/svg+xml,%3Csvg%20width%3D%2236%22%20height%3D%2212%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M22.914.545c-2.453%200-4.647%201.273-4.647%203.622%200%202.696%203.89%202.883%203.89%204.235%200%20.571-.655%201.08-1.769%201.08-1.584%200-2.768-.713-2.768-.713l-.508%202.374s1.363.602%203.173.602c2.684%200%204.795-1.336%204.795-3.727%200-2.847-3.906-3.027-3.906-4.287%200-.446.536-.937%201.65-.937%201.256%200%202.28.519%202.28.519l.495-2.29c0%20.003-1.114-.478-2.685-.478zM.46.718l-.06.346s1.032.19%201.963.567c1.197.433%201.283.685%201.484%201.467l2.197%208.47h2.945l4.54-10.85H10.59L7.673%208.095l-1.19-6.253C6.375%201.126%205.822.718%205.143.718H.46zm14.251%200l-2.304%2010.847h2.803L17.503.718H14.71zm15.63%200c-.675%200-1.035.363-1.298.993l-4.104%209.854h2.938l.567-1.644h3.581l.346%201.644h2.595L32.702.718H30.34zm.383%202.93l.872%204.073H29.26l1.463-4.073z%22%20fill%3D%22url(%23paint0_linear)%22%2F%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22paint0_linear%22%20x1%3D%22.4%22%20y1%3D%226.144%22%20x2%3D%2234.964%22%20y2%3D%226.144%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%2320225F%22%2F%3E%3Cstop%20offset%3D%22.2%22%20stop-color%3D%22%231A1F61%22%2F%3E%3Cstop%20offset%3D%22.41%22%20stop-color%3D%22%23172272%22%2F%3E%3Cstop%20offset%3D%22.595%22%20stop-color%3D%22%23152682%22%2F%3E%3Cstop%20offset%3D%22.802%22%20stop-color%3D%22%2312288E%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230E2C9A%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3C%2Fsvg%3E" alt="" /></span>
