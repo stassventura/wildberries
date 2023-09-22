@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link, useNavigate, useParams  } from 'react-router-dom'
 import { CartProduct, useCart } from '../Layout';
 import PhoneVerif from '../PhoneVerif';
+import ErrorPage from '../../pages/ErrorPage';
 
 const server = process.env.REACT_APP_SERVER_URL
 type SelectedParamsState = {
@@ -67,7 +68,7 @@ const Product = () => {
     const [isPhone, setIsPhone] = useState('')
     const { id } = useParams();
     const [mainImage, setMainImage] = useState(0)
-    
+    const [isProductNotFound, setIsProductNotFound] = useState(false)
     useEffect(() => {
         const phoneInLocalStorage = localStorage.getItem('phone');
         
@@ -104,10 +105,14 @@ const Product = () => {
                     }
                 }).then((res)=>{console.log(res)}
                 ).catch(err=>console.log(err))
+            }else{
+                setIsProductNotFound(true)
             }
             
         }).catch((err) => {
-            console.error(err);
+            // console.error(err);
+            setIsProductNotFound(true)
+
         });
     };
     useEffect(() => {
@@ -195,6 +200,10 @@ const Product = () => {
     }
     if(isPhone !== '' && isPhone === 'false' && product !== null){
         return <PhoneVerif product={product}/>
+    }
+
+    if(isProductNotFound){
+        return <ErrorPage/>
     }
   return (
     <>

@@ -1,0 +1,17 @@
+.errorWrapper{
+    width: 100%;
+    height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+
+    h2{
+        font-size: 28px;
+        color: #cb11ab;
+        font-weight: 700;
+        @media screen and (max-width: 350px){
+            font-size: 23px;
+        }
+    }
+}

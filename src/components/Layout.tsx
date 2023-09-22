@@ -5,6 +5,7 @@ import Header from './Header/index';
 import { BrowserRouter as Router, Routes , Route } from 'react-router-dom';
 import BasketPage from '../pages/BasketPage';
 import ReturnPage from '../pages/ReturnPage';
+import ErrorPage from '../pages/ErrorPage';
 
 export interface CartProduct {
   id: string;
@@ -74,6 +75,7 @@ const Layout = () => {
                 <Route path='/catalog/:id/detail' element={<ProductPage/>}></Route>
                 <Route path='/refund/:id' element={<ReturnPage/>}></Route>
                 <Route path='/lk/basket' element={<BasketPage/>}></Route>
+                <Route path='*' element={<ErrorPage/>}></Route>
               </Routes>
             <Footer/>
           </Router>
