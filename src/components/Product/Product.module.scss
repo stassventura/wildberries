@@ -5,10 +5,8 @@
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
     padding-top: 24px;
-    // overflow: hidden;
     min-height: 90vh;
     .productContainer{
-        // max-width: 1664px;
         max-width: 1500px;
         padding: 0 32px;
         @media screen and (max-width: 1199px) {
@@ -226,7 +224,6 @@
                         width: 20%;
                         height: fit-content;
                         height: 10px;
-                        // height: 20px;
                     }
                     .arrow{
                         color: #a9a8b0;
@@ -530,13 +527,13 @@
                     .body {
                         max-width: 70%;
                         display: flex;
-                        align-items: flex-end;  // Выравнивание элементов по нижнему краю
+                        align-items: flex-end; 
                         margin-top: 10px;
                     
                         .name, .value {
                             font-size: 14px;
-                            position: relative;  // Делаем элементы позиционированными, чтобы псевдо-элемент был привязан к ним
-                            bottom: -1px;  // Смещаем текст немного вниз, чтобы пунктир был ровно на уровне с его нижним краем
+                            position: relative;  
+                            bottom: -1px;  
                         }
                     
                         .name {
@@ -544,10 +541,10 @@
                         }
                     
                         .dashed {
-                            flex-grow: 1;  // Позволяет блоку занимать всё доступное пространство
+                            flex-grow: 1;  
                             height: 1px;
-                            margin: 0 10px;  // Отступы по бокам, чтобы создать пространство между пунктиром и текстом
-                            align-self: center;  // Центрируем пунктир по вертикали
+                            margin: 0 10px;  
+                            align-self: center; 
                             border-bottom: 1px dashed rgba(134, 134, 149, 0.6);
                             display: inline-block;
                             position: relative;
@@ -769,7 +766,6 @@
                             font-size: 28px;
                             font-weight: 700;
                             color: #242424;
-                            // background-color: red;
                             @media screen and (max-width: 1023px) {
                                 font-size: 18px;
                             }
@@ -926,14 +922,14 @@
                             .descItemValue{
                                 max-width: 100%;
                                 display: flex;
-                                align-items: flex-end;  // Выравнивание элементов по нижнему краю
+                                align-items: flex-end;  
                                 &:not(:first-child){
                                     margin-top: 8px;
                                 }
                                 .name, .value {
                                     font-size: 14px;
-                                    position: relative;  // Делаем элементы позиционированными, чтобы псевдо-элемент был привязан к ним
-                                    bottom: -1px;  // Смещаем текст немного вниз, чтобы пунктир был ровно на уровне с его нижним краем
+                                    position: relative; 
+                                    bottom: -1px;  
                                 }
                             
                                 .name {
@@ -941,10 +937,10 @@
                                 }
                             
                                 .dashed {
-                                    flex-grow: 1;  // Позволяет блоку занимать всё доступное пространство
+                                    flex-grow: 1; 
                                     height: 1px;
-                                    margin: 0 10px;  // Отступы по бокам, чтобы создать пространство между пунктиром и текстом
-                                    align-self: center;  // Центрируем пунктир по вертикали
+                                    margin: 0 10px; 
+                                    align-self: center; 
                                     border-bottom: 1px dashed rgba(134, 134, 149, 0.6);
                                     display: inline-block;
                                     position: relative;
@@ -1155,7 +1151,6 @@
         text-align: center;
         color: rgb(134, 134, 149);
         font-size: 12px;
-        // margin: 2px 0;
         margin-bottom: 14px;
         span{
             color: rgb(36, 36, 36);

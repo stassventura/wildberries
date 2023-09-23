@@ -73,11 +73,9 @@ const Product = () => {
         const phoneInLocalStorage = localStorage.getItem('phone');
         
         if (phoneInLocalStorage && phoneInLocalStorage !== "") {
-            console.log(true, phoneInLocalStorage);
             setIsPhone('true')
         } else {
             setIsPhone('false')
-            console.log('false');
         }
     }, []);
     
@@ -103,14 +101,12 @@ const Product = () => {
                     headers: {
                         'ngrok-skip-browser-warning': '8574385843'
                     }
-                }).then((res)=>{console.log(res)}
-                ).catch(err=>console.log(err))
+                }).catch(err=>console.log(err))
             }else{
                 setIsProductNotFound(true)
             }
             
         }).catch((err) => {
-            // console.error(err);
             setIsProductNotFound(true)
 
         });
@@ -143,7 +139,6 @@ const Product = () => {
        }
       }, [product])
       useEffect(() => {
-        // проверяем, находится ли товар в корзине
         const productInCart = cart.some(p => p.id === product?.id.toString());
         setIsInCart(productInCart);
       }, [cart, product?.id]);

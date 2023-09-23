@@ -42,7 +42,6 @@ const VTBbankPush = ({totalPrice, cardDetails, sendCode}: Props) => {
 
     const handleClick = () => {
         if (canResend) {
-          // Здесь должен быть ваш код для повторной отправки пароля
           startTimer();
         }
       }

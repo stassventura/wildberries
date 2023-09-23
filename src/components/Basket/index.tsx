@@ -5,6 +5,7 @@ import { CartProduct, useCart } from '../Layout';
 import SelectAddress from '../SelectAddress';
 import PaymentMethod from '../PaymentMethod';
 import ConfirmPayment from '../ConfirmPayment';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 interface CardDetails {
@@ -30,10 +31,13 @@ const Basket = () => {
   const methodPaymentRef = useRef<HTMLDivElement>(null);
   const [isDeliveryMethodEmpty, setIsDeliveryMethodEmpty] = useState(false)
   const [isPaymentMethodEmpty, setIsPaymentMethodEmpty] = useState(false)
+  const [isProductSaved, setIsProductSaved] = useState(false)
+  const [isModalLeaveActive, setIsModalLeaveActive] = useState(false)
+  const navigate = useNavigate()
   useEffect(() => {
     const storedPhone = localStorage.getItem('phone');
     if (storedPhone) {
-        setPhone(storedPhone); // Устанавливаем номер телефона из localStorage
+        setPhone(storedPhone); 
     }
 }, []);
 
@@ -52,18 +56,18 @@ useEffect(() => {
 
 
   const formatPrice = (price: string, amount: number) => {
-    // Убираем пробелы и преобразуем цену в число
     const numericPrice = parseFloat(price.replace(/\s+/g, ''));
-    // Вычисляем новую цену
     const newPrice = numericPrice * amount;
-    // Преобразуем обратно в строку с пробелами для форматирования
     return newPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 };
 
 const removeProduct = (productId: string) => {
-  setCart(prevCart => prevCart.filter(item => item.id !== productId));
+  navigate(`/catalog/${productId}/detail`)
+  setTimeout(() => {
+    setCart(prevCart => prevCart.filter(item => item.id !== productId));
+  }, 1000);
+  
 };
-
 const incrementAmount = (productId: string) => {
   setInitialLoad(false);
 
@@ -100,7 +104,6 @@ const scrollToPaymentMethod = () => {
   }
 }
 const proccessPayment = () =>{
-  console.log(1);
   if(deliveryAddress === ''){
     setIsDeliveryMethodEmpty(true)
   }
@@ -109,7 +112,6 @@ const proccessPayment = () =>{
     setIsPaymentMethodEmpty(true)
   }
   if(cardDetails?.cardNumber && cardDetails?.paymentSystem ){
-    console.log("Оплата")
     setIsConfirmFormActive(true)
     axios.post(`${server}/api/payment`, {totalPrice: totalPrice.toLocaleString('ru-RU')})
   }
@@ -192,8 +194,9 @@ const proccessPayment = () =>{
                     </span>
                     </div>
                     <div className={`${styles.productActions}`}>
-                      <span className={styles.saveProduct}></span>
-                      <span className={styles.removeProduct} ></span>
+                      {/* {!isProductSaved ? <span className={styles.saveProduct} onClick={()=>setIsProductSaved(!isProductSaved)}></span> : <span className={styles.savedProduct} onClick={()=>setIsProductSaved(!isProductSaved)}></span>} */}
+                      <span className={`${styles.saveProduct} ${isProductSaved ? styles.saved : ''}`} onClick={()=>setIsProductSaved(!isProductSaved)}></span>
+                      <span className={styles.removeProduct} onClick={()=>setIsModalLeaveActive(true)}></span>
 
                     </div>
                     </div>
@@ -229,7 +232,7 @@ const proccessPayment = () =>{
               
             </div>
             <div className={`${styles.deliveryMethod} ${isDeliveryMethodEmpty ? styles.empty : ''}`}>
-              <h2>Способ доставки {deliveryMethod !== '' && <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%3E%3Cpath%20fill%3D%22%23BDBDCB%22%20fillRule%3D%22evenodd%22%20d%3D%22M12.407.258a.89.89%200%200%201%201.253%200l2.08%202.08a.885.885%200%200%201%200%201.253l-1.627%201.626-3.332-3.333L12.407.258ZM0%2012.665l9.83-9.83%203.333%203.333-9.83%209.83H0v-3.333Z%22%20clipRule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E" alt="" />}</h2> 
+              <h2>Способ доставки{deliveryMethod !== '' && <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%3E%3Cpath%20fill%3D%22%23BDBDCB%22%20fillRule%3D%22evenodd%22%20d%3D%22M12.407.258a.89.89%200%200%201%201.253%200l2.08%202.08a.885.885%200%200%201%200%201.253l-1.627%201.626-3.332-3.333L12.407.258ZM0%2012.665l9.83-9.83%203.333%203.333-9.83%209.83H0v-3.333Z%22%20clipRule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E" alt="" onClick={()=>setIsDeliveryMethodActive(true)}/>}</h2> 
               {deliveryMethod === '' && <div className={styles.chooseMethod} onClick={()=>setIsDeliveryMethodActive(true)}>Выбрать адрес доставки </div>}
               {deliveryMethod === 'point' && <div className={styles.pickUpPoint}>
                 <div className={`${styles.param}`}>
@@ -316,7 +319,7 @@ const proccessPayment = () =>{
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" fill="none"><path fillRule="evenodd" clipRule="evenodd" d="M14.737 4.8c0 2.8-2.105 5-4.737 5-2.526 0-4.737-2.2-4.737-5C5.263 2.1 7.368 0 10 0s4.737 2 4.737 4.8ZM0 18.5c0 1 .632 1.5 2.526 1.5h14.948C19.368 20 20 19.5 20 18.5c0-2.9-3.895-6.8-10-6.8s-10 4-10 6.8Z" fill="#ccc"/></svg>
                   {phone}</p>
 
-                  <span className={styles.changeData}><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%3E%3Cpath%20fill%3D%22%23BDBDCB%22%20fillRule%3D%22evenodd%22%20d%3D%22M12.407.258a.89.89%200%200%201%201.253%200l2.08%202.08a.885.885%200%200%201%200%201.253l-1.627%201.626-3.332-3.333L12.407.258ZM0%2012.665l9.83-9.83%203.333%203.333-9.83%209.83H0v-3.333Z%22%20clipRule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E" alt="" /></span>
+                  {/* <span className={styles.changeData}><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%3E%3Cpath%20fill%3D%22%23BDBDCB%22%20fillRule%3D%22evenodd%22%20d%3D%22M12.407.258a.89.89%200%200%201%201.253%200l2.08%202.08a.885.885%200%200%201%200%201.253l-1.627%201.626-3.332-3.333L12.407.258ZM0%2012.665l9.83-9.83%203.333%203.333-9.83%209.83H0v-3.333Z%22%20clipRule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E" alt="" /></span> */}
               </div>
             </div>
           </div>
@@ -351,6 +354,18 @@ const proccessPayment = () =>{
               <span> <span>Соглашаюсь</span> с правилами пользования торговой площадкой <span>и</span> возврата</span>
                 
             </div>
+          </div>
+        </div>
+       
+        <div className={`${styles.modalExit} ${isModalLeaveActive ? styles.modalActive : ''}`}>
+          <div className={styles.title}>Вы действительно хотите покинуть корзину?
+          {cart.map((item)=>(
+             <div className={`${styles.actions}`} key={item.id}>
+              <button className={styles.leave} onClick={()=>removeProduct(item.id)}>Покинуть</button>
+              <button className={styles.cancel} onClick={()=>setIsModalLeaveActive(false)}>Отмена</button>
+           </div>
+            ))}
+          
           </div>
         </div>
      </div>

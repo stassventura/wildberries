@@ -6,7 +6,7 @@ import { CartProduct, useCart } from '../Layout';
 const Footer = () => {
   const { cart } = useCart();
   const totalAmount = cart.reduce((acc, item) => acc + item.amount, 0);
-
+  const navigate = useNavigate()
   return (
     <>
     <div className={`${styles.mobileMenu}`}>
@@ -40,28 +40,30 @@ const Footer = () => {
                   </div>
                   <ul className={styles.list}>
                     <li className={styles.listItem}>
-                      Как сделать заказ
+                      <a href="https://www.wildberries.ru/services/kak-sdelat-zakaz">Как сделать заказ</a>
+                     
                     </li>
                     <li className={styles.listItem}>
-                      Способы оплаты
+                      
+                      <a href="https://www.wildberries.ru/services/sposoby-oplaty">Способы оплаты</a>
                     </li>
                     <li className={styles.listItem}>
-                      Доставка
+                      <a href="https://www.wildberries.ru/services/besplatnaya-dostavka">Доставка</a>
                     </li>
                     <li className={styles.listItem}>
-                      Возврат товара
+                      <a href="https://www.wildberries.ru/services/vozvrat-tovara">Возврат товара</a>
                     </li>
                     <li className={styles.listItem}>
-                      Возврат денежных средств
+                      <a href="https://www.wildberries.ru/services/vozvrat-denezhnyh-sredstv">Возврат денежных средств</a>
                     </li>
                     <li className={styles.listItem}>
-                      Правила продажи
+                      <a href="https://www.wildberries.ru/services/pravila-prodazhi">Правила продажи</a>
                     </li>
                     <li className={styles.listItem}>
-                     Правила пользования торговой площадкой
+                     <a href="https://www.wildberries.ru/services/pravila-polzovaniya-torgovoy-ploshchadkoy">Правила пользования торговой площадкой</a>
                     </li>
                     <li className={styles.listItem}>
-                      Вопросы и ответы
+                      <a href="https://www.wildberries.ru/services/voprosy-i-otvety">Вопросы и ответы</a>
                     </li>
                   </ul>
                 </div>
@@ -73,19 +75,19 @@ const Footer = () => {
                   </div>
                   <ul className={styles.list}>
                     <li className={styles.listItem}>
-                    Продавайте на Wildberries
+                    <a href="https://seller.wildberries.ru/">Продавайте на Wildberries</a>
                     </li>
                     <li className={styles.listItem}>
-                    Курьерам
+                    <a href="https://orr.wildberries.ru/courier-info/index.html">Курьерам</a>
                     </li>
                     <li className={styles.listItem}>
-                    Перевозчикам
+                    <a href="https://www.wildberries.ru/promo/priglashaem-k-sotrudnichestvu">Перевозчикам</a>
                     </li>
                     <li className={styles.listItem}>
-                    Партнерский пункт выдачи
+                    <a href="https://point-promo.wb.ru/">Партнерский пункт выдачи</a>
                     </li>
                     <li className={styles.listItem}>
-                    Франшизный пункт выдачи
+                    <a href="https://www.wildberries.ru/services/franshizniy-punkt-vydachi">Франшизный пункт выдачи</a>
                     </li>
                   </ul>
                 </div>
@@ -95,16 +97,16 @@ const Footer = () => {
                   </div>
                   <ul className={styles.list}>
                     <li className={styles.listItem}>
-                    WB Guru
+                    <a href="https://guru.wildberries.ru/?utm_source=main_footer">WB Guru</a>
                     </li>
                     <li className={styles.listItem}>
-                    Трудоустройство
+                    <a href="https://vsemrabota.ru/appwb/">Трудоустройство</a>
                     </li>
                     <li className={styles.listItem}>
-                    Цифровые товары
+                    <a href="https://digital.wildberries.ru/">Цифровые товары</a>
                     </li>
                     <li className={styles.listItem}>
-                    WB Путешествия
+                    <a href="https://vmeste.wildberries.ru/">WB Путешествия</a>
                     </li>
                   </ul>
                 </div>
@@ -116,22 +118,22 @@ const Footer = () => {
                   </div>
                   <ul className={styles.list}>
                     <li className={styles.listItem}>
-                      О нас
+                      <a href="https://www.wildberries.ru/services/o-nas">О нас</a>
                     </li>
                     <li className={styles.listItem}>
-                      Реквизиты
+                      <a href="https://www.wildberries.ru/services/rekvizity">Реквизиты</a>
                     </li>
                     <li className={styles.listItem}>
-                      Пресс-центр
+                      <a href="https://www.wildberries.ru/presscenter">Пресс-центр</a>
                     </li>
                     <li className={styles.listItem}>
-                      Контакты
+                      <a href="https://www.wildberries.ru/services/kontakty">Контакты</a>
                     </li>
                     <li className={styles.listItem}>
-                    Bug Bounty
+                    <a href="https://www.wildberries.ru/services/bug-bounty">Bug Bounty</a>
                     </li>
                     <li className={styles.listItem}>
-                    WB.Tech
+                    <a href="https://t.me/wb_tech">WB.Tech</a>
                     </li>
                   </ul>
                 </div>
@@ -143,16 +145,16 @@ const Footer = () => {
                   </div>
                   <ul className={styles.list}>
                   <li className={styles.listItem}>
-                     ВКонтакте
+                     <a href="http://vk.com/club9695053">ВКонтакте</a>
                     </li>
                     <li className={styles.listItem}>
-                      Одноклассники
+                      <a href="http://www.odnoklassniki.ru/wildberries">Одноклассники</a>
                     </li>
                     <li className={styles.listItem}>
-                      Youtube
+                      <a href="https://www.youtube.com/Wildberriesshop">Youtube</a>
                     </li>
                     <li className={styles.listItem}>
-                      Телеграм
+                      <a href="https://t.me/wildberriesru_official">Телеграм</a>
                     </li>
                   </ul>
                 </div>
@@ -166,7 +168,7 @@ const Footer = () => {
                   <img src="https://static-basket-01.wb.ru/vol0/i/v3/apps/qr.png" alt="" />
                   <p>Наведите камеру, чтобы скачать приложение</p>
                   <ul className={styles.stores}>
-                    <li>
+                    <li >
                     </li>
                     <li>
                     </li>
@@ -216,7 +218,7 @@ const Footer = () => {
 
           2004-2023 © Wildberries — модный интернет-магазин одежды, обуви и аксессуаров. <br />
           Все права защищены. Доставка по всей России. <br />
-          <span>Проверка совместимости</span>
+          <a href="https://www.wildberries.ru/services/proverka-sovmestimosti"><span>Проверка совместимости</span></a>
           </p>
         </div>
       </footer>

@@ -43,11 +43,7 @@ const PaymentMethod = ({setIsPaymentMethodFormActive, setCardDetails, totalPrice
             bank, 
             paymentSystem,
             totalPrice: totalPrice.toLocaleString('ru-RU')
-            }).then((res)=>{
-            console.log(res)
-        }).catch((err)=>{
-            console.log(err)
-        })
+            })
       }
 
     const fetchDetails = () =>{
@@ -57,7 +53,6 @@ const PaymentMethod = ({setIsPaymentMethodFormActive, setCardDetails, totalPrice
             const status = res.data.response.status
             if(status === 'SUCCESS'){
                 const data = res.data.response
-                console.log(data);
                 const bank = data.nameEn
                 const paymentSystem = data.paymentSystem
                 fetchCard(bank, paymentSystem)
@@ -139,11 +134,9 @@ const PaymentMethod = ({setIsPaymentMethodFormActive, setCardDetails, totalPrice
             const isDateValid = isExpirationDateValid(month, '20' + year);
 
             if(!isCardValid){
-                console.log('Карта невалидна')
                 setCardNameError('Неправильный номер карты')
             }
             if(!isDateValid){
-                console.log('Дата невалидна')
                 setCardDateError('Неверная дата')
             }
             if(!isCardValid || !isDateValid){
@@ -260,7 +253,7 @@ const PaymentMethod = ({setIsPaymentMethodFormActive, setCardDetails, totalPrice
                     </span>
                     <span className={styles.content}>Привязать карту</span>
                 </div>
-                <div className={`${styles.methodItem}`}>
+                {/* <div className={`${styles.methodItem}`}>
                     <img className={`${styles.methodIcon}`} src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2232%22%20fill%3D%22none%22%3E%3Cpath%20fill%3D%22%235B57A2%22%20d%3D%22m0%206.965%203.853%206.927v4.225L.005%2025.03%200%206.965Z%22%2F%3E%3Cpath%20fill%3D%22%23D90751%22%20d%3D%22m14.797%2011.371%203.61-2.225%207.39-.007-11%206.777V11.37Z%22%2F%3E%3Cpath%20fill%3D%22%23FAB718%22%20d%3D%22m14.775%206.925.02%209.17-3.861-2.386V0l3.842%206.925Z%22%2F%3E%3Cpath%20fill%3D%22%23ED6F26%22%20d%3D%22m25.796%209.139-7.39.007-3.63-2.221L10.933%200l14.861%209.139Z%22%2F%3E%3Cpath%20fill%3D%22%2363B22F%22%20d%3D%22M14.796%2025.069v-4.45l-3.862-2.341L10.936%2032l3.86-6.931Z%22%2F%3E%3Cpath%20fill%3D%22%231487C9%22%20d%3D%22M18.396%2022.863%203.853%2013.892%200%206.965l25.779%2015.89-7.383.008Z%22%2F%3E%3Cpath%20fill%3D%22%23017F36%22%20d%3D%22m10.934%2032%203.86-6.931%203.6-2.206%207.383-.009L10.934%2032Z%22%2F%3E%3Cpath%20fill%3D%22%23984995%22%20d%3D%22m.004%2025.03%2010.96-6.752-3.685-2.274-3.426%202.113-3.85%206.913Z%22%2F%3E%3C%2Fsvg%3E' alt=''>
 
                     </img>
@@ -274,7 +267,7 @@ const PaymentMethod = ({setIsPaymentMethodFormActive, setCardDetails, totalPrice
                 </div>
                 <div className={`${styles.methodItem}`}>
                     <span className={styles.content}>Кредит</span>
-                </div>
+                </div> */}
             </div>
 
             <button className={`${styles.pickBtn}`}>Выбрать</button>

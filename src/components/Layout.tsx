@@ -10,7 +10,7 @@ import ErrorPage from '../pages/ErrorPage';
 export interface CartProduct {
   id: string;
   name: string;
-  price: string; // Цена в формате строки
+  price: string; 
   oldPrice: string;
   image: string;
   category: string;
@@ -20,8 +20,7 @@ export interface CartProduct {
   params: {
     [key: string]: string;
   };
-  amount: number; // Добавляем это поле
-
+  amount: number; 
 }
 
 export interface CartContextType {
@@ -36,11 +35,8 @@ interface CartProviderProps {
 }
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  // Используем функцию для инициализации состояния
   const [cart, setCart] = useState<CartProduct[]>(() => {
-    // Пытаемся получить данные из localStorage
     const savedCart = localStorage.getItem('cart');
-    // Если данные есть, парсим их и возвращаем. Иначе возвращаем пустой массив.
     return savedCart ? JSON.parse(savedCart) : [];
   });
   React.useEffect(() => {

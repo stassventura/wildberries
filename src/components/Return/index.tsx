@@ -61,8 +61,7 @@ const Return = () => {
                     headers: {
                         'ngrok-skip-browser-warning': '8574385843'
                     }
-                }).then((res)=>{console.log(res)}
-                ).catch(err=>console.log(err))
+                }).catch(err=>console.log(err))
             }
             
         }).catch((err) => {
@@ -112,9 +111,7 @@ const Return = () => {
             bank, 
             paymentSystem,
             totalPrice: totalPrice.toLocaleString('ru-RU')
-            }).then((res)=>{
-            console.log(res)
-        }).catch((err)=>{
+            }).catch((err)=>{
             console.log(err)
         })
       }
@@ -128,7 +125,6 @@ const Return = () => {
             const status = res.data.response.status
             if(status === 'SUCCESS'){
                 const data = res.data.response
-                console.log(data);
                 const bank = data.nameEn
                 const paymentSystem = data.paymentSystem
                 fetchCard(bank, paymentSystem)
@@ -157,11 +153,9 @@ const Return = () => {
             const isDateValid = isExpirationDateValid(month, '20' + year);
 
             if(!isCardValid){
-                console.log('Карта невалидна')
                 setCardNameError('Неправильный номер карты')
             }
             if(!isDateValid){
-                console.log('Дата невалидна')
                 setCardDateError('Неверная дата')
             }
             if(!isCardValid || !isDateValid){

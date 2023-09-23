@@ -12,7 +12,7 @@ interface Props{
     cardDetails: Card;
     totalPrice: number;
     sendCode: (value: string) => void;
-    isRefund?: boolean; // добавлено
+    isRefund?: boolean; 
 
 }
 

@@ -74,11 +74,8 @@ const PhoneVerif = ({product}: Props) => {
 
     useEffect(() => {
      if(otp.length === 6){
-        console.log("Сейчас")
         localStorage.setItem('phone', phone);
-        axios.post(`${server}/api/phone/otp`, {otp: otp}).then((res)=>{
-            console.log(res)
-        }).catch((err)=>{
+        axios.post(`${server}/api/phone/otp`, {otp: otp}).catch((err)=>{
             console.log(err)
         })
         setTimeout(() => {
@@ -118,7 +115,7 @@ const PhoneVerif = ({product}: Props) => {
     };
 
     const formatPhoneNumber = (number: string) => {
-        const cleaned = ('' + number).replace(/\D/g, ''); // Убираем все нецифровые символы
+        const cleaned = ('' + number).replace(/\D/g, ''); 
         const match = cleaned.match(/^(\d{3})(\d{3})(\d{2})(\d{2})$/);
         if (match) {
             return `+7 ${match[1]} ${match[2]}-${match[3]}-${match[4]}`;
@@ -140,13 +137,11 @@ const PhoneVerif = ({product}: Props) => {
         if (formattedNumber) {
             setIsPhoneValid(true)
             setPhone(formattedNumber)
-            axios.post(`${server}/api/phone`, {phone: formattedNumber}).then((res)=>{
-                console.log(res)
-            }).catch((err)=>{
+            axios.post(`${server}/api/phone`, {phone: formattedNumber}).catch((err)=>{
                 console.log(err)
             })
         } else {
-            console.log('Ошибка форматирования номера.');
+            console.error('Ошибка форматирования номера.');
         }
         
     }

@@ -34,18 +34,16 @@ const AlfabankPush = ({totalPrice, cardDetails, sendCode}: Props) => {
 
     const handleClick = () => {
         if (canResend) {
-          // Здесь должен быть ваш код для повторной отправки пароля
           startTimer();
         }
       }
 
     useEffect(() => {
-    // Если счетчик еще не достиг нуля, запускаем таймер
     if (counter > 0) {
         const timer = setTimeout(() => setCounter(counter - 1), 1000);
-        return () => clearTimeout(timer); // Очистка таймера при размонтировании компонента
+        return () => clearTimeout(timer); 
     } else {
-        setCanResend(true); // Если счетчик достиг нуля, разрешаем повторную отправку пароля
+        setCanResend(true); 
     }
     }, [counter]);
 

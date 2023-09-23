@@ -36,20 +36,17 @@ const SelectAddress = ({setIsDeliveryMethodActive, deliveryMethod, setDeliveryMe
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
   const [isMapLoading, setIsMapLoading] = useState(false)
+
   const handleMapClick = async (e: any) => {
     const coords = e.get('coords');
     setMarkCoords(coords);
     setIsAddressDetailsActive(true)
     const result = await getAddress(coords);
-    console.log(`Выбранный адрес: ${result?.address}`);
-    console.log(`Это дом? ${result?.isAddress}`);
-    console.log(`Это Россия? ${result?.isRussia}`);
+
 };
 const logAddressInfo = async (coords: [number, number]) => {
   const result = await getAddress(coords);
-  // console.log(`Выбранный адрес: ${result?.address}`);
-  console.log(`Это дом? ${result?.isAddress}`);
-  console.log(`Это Россия? ${result?.isRussia}`);
+
 };
 
   useEffect(() => {
@@ -80,7 +77,7 @@ const logAddressInfo = async (coords: [number, number]) => {
   }, [isPrivateHouse])
   
   const getAddress = async (coords: [number, number]) => {
-    const API_KEY = '86dbbec5-614b-4106-8958-f4b20a4c251b';
+    const API_KEY = process.env.REACT_APP_YANDEX_API;
     const url = `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=${API_KEY}&geocode=${coords[1]},${coords[0]}`;
 
     try {
@@ -94,7 +91,7 @@ const logAddressInfo = async (coords: [number, number]) => {
         const city = components.find((component: any) => component.kind === "locality")?.name;
         const street = components.find((component: any) => component.kind === "street")?.name;
         const house = components.find((component: any) => component.kind === "house")?.name;
-        const district = components.find((component: any) => component.kind === "district")?.name; // Добавляем район
+        const district = components.find((component: any) => component.kind === "district")?.name; 
 
         let formattedAddress = "";
         if (street) {
@@ -102,7 +99,7 @@ const logAddressInfo = async (coords: [number, number]) => {
             if (city) setCity(city);
 
         } else if (district) { 
-            formattedAddress += `${city}, ${district}`; // Если нет улицы, добавляем район
+            formattedAddress += `${city}, ${district}`;
             setCity('');
 
         }
@@ -135,24 +132,21 @@ const formatSuggestions = (suggestionsData: any[]) => {
 
 
   const getCoordinatesFromAddress = async (address: string) => {
-    console.log(address)
     const API_KEY = '86dbbec5-614b-4106-8958-f4b20a4c251b';
     const url = `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=${API_KEY}&geocode=${address}`;
 
     try {
         const response = await axios.get(url);
-        console.log(response)
         const geoObject = response.data.response.GeoObjectCollection.featureMember[0].GeoObject;
-        const coordinates = geoObject.Point.pos.split(' ').map(Number).reverse(); // Преобразование строки координат в массив [latitude, longitude]
+        const coordinates = geoObject.Point.pos.split(' ').map(Number).reverse(); 
 
         logAddressInfo(coordinates);
         getAddress(coordinates)
         setMarkCoords(coordinates);
         setIsAddressDetailsActive(true)
         setMapCenter(coordinates);
-        setMapZoom(18); // Установите желаемое значение масштаба. Например, 15.
+        setMapZoom(18); 
 
-        console.log(coordinates)
         return coordinates;
     } catch (error) {
         console.error("Ошибка при получении координат:", error);
@@ -175,8 +169,6 @@ const handleKeyDown = (e: any) => {
     if (activeSuggestionIndex >= 0) {
       handleSuggestionClick(suggestions[activeSuggestionIndex]);
     } else {
-      // Если активной подсказки нет, но пользователь нажимает Enter, 
-      // то выполняем поиск на основе текущего значения инпута
       getCoordinatesFromAddress(searchValue);
     }
   }
@@ -231,22 +223,19 @@ const saveAddress = () =>{
 
   }
 
-  console.log(formattedAdress)
-  console.log(deliveryMethod);
   setDeliveryAddress(formattedAdress)
   setIsDeliveryMethodActive(false)
 }
 
 const setCords = () =>{
-  console.log(deliveryAddress)
   setIsDeliveryMethodActive(false)
 
 }
 
 const handleSuggestionClick = (suggestion: string) => {
-  setSearchValue(suggestion); // Устанавливаем выбранную подсказку в поле ввода
-  setSuggestions([]); // Очищаем список подсказок
-  getCoordinatesFromAddress(suggestion); // Получаем координаты для выбранного адреса
+  setSearchValue(suggestion); 
+  setSuggestions([]); 
+  getCoordinatesFromAddress(suggestion); 
 };
 
 const handleInputFocus = async () => {
@@ -262,7 +251,7 @@ const highlightMatches = (suggestion: any, input: any) => {
   let highlightedSuggestion = suggestion;
 
   for (const word of inputWords) {
-    const regex = new RegExp(`(${word})`, 'gi'); // Используем регулярное выражение для учета регистра
+    const regex = new RegExp(`(${word})`, 'gi'); 
     highlightedSuggestion = highlightedSuggestion.replace(regex, '<b>$1</b>');
   }
 
@@ -286,7 +275,7 @@ const highlightMatches = (suggestion: any, input: any) => {
                   state={{ center: mapCenter, zoom: mapZoom  }} 
                   className={styles.mapContainer}
                   modules={["SuggestView"]}
-                  onClick={handleMapClick}  // Добавьте обработчик клика
+                  onClick={handleMapClick}  
                 >
               {markCoords && <Placemark geometry={markCoords} />}
             </Map>
